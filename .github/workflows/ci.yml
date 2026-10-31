@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    name: Lint and test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Pester and PSScriptAnalyzer
+        run: |
+          Set-PSRepository PSGallery -InstallationPolicy Trusted
+          Install-Module Pester -MinimumVersion 5.5.0 -Force -Scope CurrentUser -SkipPublisherCheck
+          Install-Module PSScriptAnalyzer -Force -Scope CurrentUser
+
+      - name: Lint (PSScriptAnalyzer)
+        run: |
+          $issues = foreach ($dir in './src', './examples') { Invoke-ScriptAnalyzer -Path $dir -Recurse -Settings ./PSScriptAnalyzerSettings.psd1 }
+          $issues | Format-Table RuleName, ScriptName, Line, Message -AutoSize -Wrap
+          if ($issues) { throw "$($issues.Count) analyzer issue(s) found." }
+
+      - name: Unit tests (Pester)
+        run: |
+          $cfg = New-PesterConfiguration
+          $cfg.Run.Path = './tests'
+          $cfg.Run.Exit = $true
+          $cfg.Output.Verbosity = 'Detailed'
+          $cfg.TestResult.Enabled = $true
+          $cfg.TestResult.OutputPath = 'testResults.xml'
+          Invoke-Pester -Configuration $cfg
+
+      - name: Demo run (end to end)
+        run: ./examples/Start-Demo.ps1 -NoOpen
+
+      - name: Upload demo reports
+        if: matrix.os == 'ubuntu-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: demo-reports
+          path: reports/

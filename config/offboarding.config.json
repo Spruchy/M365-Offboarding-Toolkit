@@ -1,0 +1,27 @@
+{
+  "_readme": "Settings for Invoke-UserOffboarding. Keys starting with _ are comments. See docs/CONFIG.md.",
+  "CompanyName": "Larkspur Labs",
+  "ProtectedAccounts": [
+    "breakglass*@*",
+    "emergency*@*"
+  ],
+  "BlockPrivilegedUsers": true,
+  "DeviceAction": "None",
+  "AutoReply": {
+    "Internal": "{DisplayName} is no longer with {CompanyName}. For anything they were working on, please contact {ManagerName} at {ManagerEmail}.",
+    "External": "Thank you for your message. {DisplayName} is no longer with {CompanyName}. Please contact {ManagerName} at {ManagerEmail}, who will be glad to help."
+  },
+  "ReportPath": "./reports",
+  "Steps": {
+    "DisableSignIn": true,
+    "RevokeSessions": true,
+    "ResetPassword": true,
+    "SetAutoReply": true,
+    "ConvertMailboxToShared": true,
+    "HideFromAddressList": true,
+    "GrantOneDriveAccess": true,
+    "RemoveGroupMemberships": true,
+    "RemoveLicenses": true,
+    "DeviceAction": true
+  }
+}

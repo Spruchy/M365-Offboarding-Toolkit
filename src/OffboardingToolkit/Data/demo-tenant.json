@@ -1,0 +1,135 @@
+{
+  "_comment": "Fictional demo tenant. Every name, ID and domain here is made up. Loaded fresh on every Connect-OffboardingToolkit -Demo, so changes never persist.",
+  "tenant": {
+    "name": "Larkspur Labs (demo tenant)",
+    "domain": "larkspurlabs.example"
+  },
+  "skus": [
+    { "skuId": "05e9a617-0261-4cee-bb44-138d3ef5d965", "skuPartNumber": "SPE_E3", "displayName": "Microsoft 365 E3", "includesExchange": true },
+    { "skuId": "f8a1db68-be16-40ed-86d5-cb42ce701560", "skuPartNumber": "POWER_BI_PRO", "displayName": "Power BI Pro", "includesExchange": false },
+    { "skuId": "1f2f344a-700d-42c9-9427-5cea1d5d7ba6", "skuPartNumber": "STREAM", "displayName": "Microsoft Stream", "includesExchange": false }
+  ],
+  "groups": [
+    { "id": "a1f3c0d2-0001-4a6e-9c11-000000000001", "displayName": "Sales Team", "groupTypes": ["Unified"], "mailEnabled": true, "securityEnabled": false, "onPremisesSyncEnabled": null, "mail": "salesteam@larkspurlabs.example" },
+    { "id": "a1f3c0d2-0002-4a6e-9c11-000000000002", "displayName": "All Employees (dynamic)", "groupTypes": ["DynamicMembership"], "mailEnabled": false, "securityEnabled": true, "onPremisesSyncEnabled": null, "mail": null },
+    { "id": "a1f3c0d2-0003-4a6e-9c11-000000000003", "displayName": "VPN Users", "groupTypes": [], "mailEnabled": false, "securityEnabled": true, "onPremisesSyncEnabled": null, "mail": null },
+    { "id": "a1f3c0d2-0004-4a6e-9c11-000000000004", "displayName": "Sales Announcements (distribution list)", "groupTypes": [], "mailEnabled": true, "securityEnabled": false, "onPremisesSyncEnabled": null, "mail": "sales-announce@larkspurlabs.example" },
+    { "id": "a1f3c0d2-0005-4a6e-9c11-000000000005", "displayName": "CRM Users", "groupTypes": [], "mailEnabled": false, "securityEnabled": true, "onPremisesSyncEnabled": null, "mail": null },
+    { "id": "a1f3c0d2-0006-4a6e-9c11-000000000006", "displayName": "License - Power BI Pro", "groupTypes": [], "mailEnabled": false, "securityEnabled": true, "onPremisesSyncEnabled": null, "mail": null },
+    { "id": "a1f3c0d2-0007-4a6e-9c11-000000000007", "displayName": "Finance Share (synced from AD)", "groupTypes": [], "mailEnabled": false, "securityEnabled": true, "onPremisesSyncEnabled": true, "mail": null }
+  ],
+  "users": [
+    {
+      "id": "7c1e2b30-1111-4d2a-8f00-00000000a001",
+      "userPrincipalName": "jordan.reyes@larkspurlabs.example",
+      "displayName": "Jordan Reyes",
+      "jobTitle": "Account Executive",
+      "department": "Sales",
+      "mail": "jordan.reyes@larkspurlabs.example",
+      "accountEnabled": true,
+      "onPremisesSyncEnabled": null,
+      "managerId": "7c1e2b30-1111-4d2a-8f00-00000000a002",
+      "roles": [],
+      "groupIds": [
+        "a1f3c0d2-0001-4a6e-9c11-000000000001",
+        "a1f3c0d2-0002-4a6e-9c11-000000000002",
+        "a1f3c0d2-0003-4a6e-9c11-000000000003",
+        "a1f3c0d2-0004-4a6e-9c11-000000000004",
+        "a1f3c0d2-0005-4a6e-9c11-000000000005",
+        "a1f3c0d2-0006-4a6e-9c11-000000000006",
+        "a1f3c0d2-0007-4a6e-9c11-000000000007"
+      ],
+      "licenses": [
+        { "skuId": "05e9a617-0261-4cee-bb44-138d3ef5d965", "direct": true, "viaGroupIds": [] },
+        { "skuId": "f8a1db68-be16-40ed-86d5-cb42ce701560", "direct": false, "viaGroupIds": ["a1f3c0d2-0006-4a6e-9c11-000000000006"] }
+      ],
+      "mailbox": { "recipientTypeDetails": "UserMailbox", "hiddenFromAddressListsEnabled": false },
+      "oneDrive": { "id": "b!demoDriveJordanReyes", "webUrl": "https://larkspurlabs-my.sharepoint.example/personal/jordan_reyes_larkspurlabs_example" }
+    },
+    {
+      "id": "7c1e2b30-1111-4d2a-8f00-00000000a002",
+      "userPrincipalName": "priya.shah@larkspurlabs.example",
+      "displayName": "Priya Shah",
+      "jobTitle": "Director of Sales",
+      "department": "Sales",
+      "mail": "priya.shah@larkspurlabs.example",
+      "accountEnabled": true,
+      "onPremisesSyncEnabled": null,
+      "managerId": null,
+      "roles": [],
+      "groupIds": ["a1f3c0d2-0001-4a6e-9c11-000000000001", "a1f3c0d2-0002-4a6e-9c11-000000000002"],
+      "licenses": [{ "skuId": "05e9a617-0261-4cee-bb44-138d3ef5d965", "direct": true, "viaGroupIds": [] }],
+      "mailbox": { "recipientTypeDetails": "UserMailbox", "hiddenFromAddressListsEnabled": false },
+      "oneDrive": { "id": "b!demoDrivePriyaShah", "webUrl": "https://larkspurlabs-my.sharepoint.example/personal/priya_shah_larkspurlabs_example" }
+    },
+    {
+      "id": "7c1e2b30-1111-4d2a-8f00-00000000a003",
+      "userPrincipalName": "breakglass01@larkspurlabs.example",
+      "displayName": "Break Glass 01",
+      "jobTitle": null,
+      "department": null,
+      "mail": null,
+      "accountEnabled": true,
+      "onPremisesSyncEnabled": null,
+      "managerId": null,
+      "roles": ["Global Administrator"],
+      "groupIds": [],
+      "licenses": [],
+      "mailbox": null,
+      "oneDrive": null
+    },
+    {
+      "id": "7c1e2b30-1111-4d2a-8f00-00000000a004",
+      "userPrincipalName": "sam.okafor@larkspurlabs.example",
+      "displayName": "Sam Okafor",
+      "jobTitle": "Systems Administrator",
+      "department": "IT",
+      "mail": "sam.okafor@larkspurlabs.example",
+      "accountEnabled": true,
+      "onPremisesSyncEnabled": null,
+      "managerId": "7c1e2b30-1111-4d2a-8f00-00000000a002",
+      "roles": ["Exchange Administrator", "Intune Administrator"],
+      "groupIds": ["a1f3c0d2-0002-4a6e-9c11-000000000002", "a1f3c0d2-0003-4a6e-9c11-000000000003"],
+      "licenses": [{ "skuId": "05e9a617-0261-4cee-bb44-138d3ef5d965", "direct": true, "viaGroupIds": [] }],
+      "mailbox": { "recipientTypeDetails": "UserMailbox", "hiddenFromAddressListsEnabled": false },
+      "oneDrive": { "id": "b!demoDriveSamOkafor", "webUrl": "https://larkspurlabs-my.sharepoint.example/personal/sam_okafor_larkspurlabs_example" }
+    },
+    {
+      "id": "7c1e2b30-1111-4d2a-8f00-00000000a005",
+      "userPrincipalName": "casey.lin@larkspurlabs.example",
+      "displayName": "Casey Lin",
+      "jobTitle": "Marketing Coordinator",
+      "department": "Marketing",
+      "mail": "casey.lin@larkspurlabs.example",
+      "accountEnabled": false,
+      "onPremisesSyncEnabled": null,
+      "managerId": "7c1e2b30-1111-4d2a-8f00-00000000a002",
+      "roles": [],
+      "groupIds": ["a1f3c0d2-0002-4a6e-9c11-000000000002"],
+      "licenses": [],
+      "mailbox": { "recipientTypeDetails": "SharedMailbox", "hiddenFromAddressListsEnabled": true },
+      "oneDrive": null
+    },
+    {
+      "id": "7c1e2b30-1111-4d2a-8f00-00000000a006",
+      "userPrincipalName": "morgan.blake@larkspurlabs.example",
+      "displayName": "Morgan Blake",
+      "jobTitle": "Accountant",
+      "department": "Finance",
+      "mail": "morgan.blake@larkspurlabs.example",
+      "accountEnabled": true,
+      "onPremisesSyncEnabled": true,
+      "managerId": "7c1e2b30-1111-4d2a-8f00-00000000a002",
+      "roles": [],
+      "groupIds": ["a1f3c0d2-0007-4a6e-9c11-000000000007"],
+      "licenses": [{ "skuId": "05e9a617-0261-4cee-bb44-138d3ef5d965", "direct": true, "viaGroupIds": [] }],
+      "mailbox": { "recipientTypeDetails": "UserMailbox", "hiddenFromAddressListsEnabled": false },
+      "oneDrive": null
+    }
+  ],
+  "devices": [
+    { "id": "d0c5e1a0-0001-47b1-8e10-0000000000d1", "userId": "7c1e2b30-1111-4d2a-8f00-00000000a001", "deviceName": "LT-JREYES-01", "operatingSystem": "Windows", "ownerType": "company", "complianceState": "compliant" },
+    { "id": "d0c5e1a0-0002-47b1-8e10-0000000000d2", "userId": "7c1e2b30-1111-4d2a-8f00-00000000a001", "deviceName": "Jordan's iPhone", "operatingSystem": "iOS", "ownerType": "personal", "complianceState": "compliant" },
+    { "id": "d0c5e1a0-0003-47b1-8e10-0000000000d3", "userId": "7c1e2b30-1111-4d2a-8f00-00000000a004", "deviceName": "MBP-SOKAFOR", "operatingSystem": "macOS", "ownerType": "company", "complianceState": "compliant" }
+  ]
+}
